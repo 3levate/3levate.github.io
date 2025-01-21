@@ -84,8 +84,7 @@
 /* .steaks > li:hover {
   transform: translatey(-30px);
 } */
-.steaks-gallery > li:hover .steak-background,
-.steaks-gallery > li:focus .steak-background {
+.steaks-gallery > li:hover .steak-background {
   opacity: 1;
   transform: translatey(0%);
   visibility: visible;

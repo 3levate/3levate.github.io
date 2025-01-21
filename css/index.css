@@ -51,8 +51,7 @@ footer {
       cursor: pointer;
       transition: color 0.3s ease;
     }
-    li:hover,
-    li:focus {
+    li:hover {
       color: white;
     }
   }
@@ -124,8 +123,7 @@ footer {
   transition: color 0.3s ease;
   cursor: pointer;
 }
-#nav-list > li:hover,
-#nav-list > li:focus {
+#nav-list > li:hover {
   color: #ff4500;
 }
 #nav-list > li::after {
@@ -140,8 +138,7 @@ footer {
   transform-origin: bottom left;
   transition: transform 0.3s ease;
 }
-#nav-list > li:hover::after,
-#nav-list > li:focus::after {
+#nav-list > li:hover::after {
   transform: scaleX(0.99);
   transform-origin: bottom left;
 }
@@ -205,8 +202,7 @@ header {
   .steaks-gallery > li {
     flex: 0 0 15%;
   }
-  .steaks-gallery > li:hover,
-  .steaks-gallery > li:focus {
+  .steaks-gallery > li:hover {
     flex: 0 0 min(350px, 40%);
   }
   #steaks-banner {
@@ -262,8 +258,7 @@ header {
   .steaks-gallery > li {
     flex: 0 0 15%;
   }
-  .steaks-gallery > li:hover,
-  .steaks-gallery > li:focus {
+  .steaks-gallery > li:hover {
     flex: 0 0 250px;
   }
 }

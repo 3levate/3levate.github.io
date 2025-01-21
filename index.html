@@ -15,13 +15,18 @@
     </style>
   </head>
   <body>
+    <h1 id="unsupported-screen-size">
+      ERROR: Sorry our steaks are too thick to display on your screen
+    </h1>
     <div id="container">
       <button id="borders" onclick="document.body.classList.toggle('show-borders');">
         Borders
       </button>
 
       <header id="nav">
-        <a href="./index.html"><img src="./assets/theprimecut_white_cropped.png" id="logo" /></a>
+        <a href="./index.html">
+          <img src="./assets/theprimecut_white_cropped.png" id="logo" alt="The Prime Cut" />
+        </a>
         <ul id="nav-list">
           <li>Menus</li>
           <li>Locations</li>
@@ -125,7 +130,7 @@
           <li>Contact</li>
           <li>Accessibility</li>
         </ul>
-        <p>&copy 2025 The Prime Cut. All Rights Reserved.</p>
+        <p>&copy; 2025 The Prime Cut. All Rights Reserved.</p>
       </footer>
     </div>
     <script>

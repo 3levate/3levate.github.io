@@ -11,7 +11,7 @@
   h1 {
     margin: 0;
     padding: 0 0 10px 20px;
-    font-size: 25px;
+    font-size: 140%;
     font-weight: 100;
     color: #201e1c;
     /* color: #969696; */
@@ -21,7 +21,7 @@
     padding: 0 5% 0 5%;
     font-family: "proxima-nova", sans-serif;
     color: #969696;
-    font-size: 90%;
+    font-size: 80%;
   }
 }
 .steaks {

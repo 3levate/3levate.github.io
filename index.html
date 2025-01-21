@@ -39,7 +39,11 @@
       </div>
       <div class="steaks">
         <div id="steaks-banner">
-          <h1>Our Signature Cuts</h1>
+          <h1>Signature steaks, timeless quality.</h1>
+          <p>
+            Crafted from premium, 100% grass-fed beef, our steaks are hand-selected and aged to
+            perfection. Experience the art of timeless flavor in every bite.
+          </p>
         </div>
         <ul class="steaks-gallery">
           <li>
@@ -124,5 +128,37 @@
         <p>&copy 2025 The Prime Cut. All Rights Reserved.</p>
       </footer>
     </div>
+    <script>
+      const mediaQuery = window.matchMedia("(min-width: 1281px) and (max-width: 1600px)");
+      function handleMediaQueryChange(mediaQuery) {
+        const container = document.querySelector("#container");
+        const steaksGallery = document.querySelector(".steaks-gallery");
+        const steaksBanner = document.querySelector("#steaks-banner");
+        let steaks = document.querySelector(".steaks");
+
+        //if it is max width screen size then ensure steaks for flexbox with gallery and banner
+        if (mediaQuery.matches) {
+          if (!steaks) {
+            steaks = document.createElement("div");
+            steaks.classList.add("steaks");
+            container.appendChild(steaks);
+            console.log("created steaks");
+          }
+
+          if (!steaks.contains(steaksGallery) && !steaks.contains(steaksBanner)) {
+            steaks.appendChild(steaksGallery);
+            steaks.appendChild(steaksBanner);
+            console.log("added steaks gallery and steaks-banner to steaks");
+          }
+        } else if (steaks) {
+          container.insertBefore(steaksGallery, steaks);
+          container.insertBefore(steaksBanner, steaks);
+          steaks.remove();
+          console.log("removed steaks");
+        }
+      }
+      mediaQuery.addListener(handleMediaQueryChange);
+      handleMediaQueryChange(mediaQuery);
+    </script>
   </body>
 </html>

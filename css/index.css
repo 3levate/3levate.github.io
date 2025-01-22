@@ -1,5 +1,5 @@
 #unsupported-screen-size {
-  visibility: collapse;
+  display: none;
   position: absolute;
   top: 0;
   color: white;
@@ -10,6 +10,7 @@
   padding: 50px;
 }
 #borders {
+  /* visibility: hidden; */
   position: absolute;
   right: 0;
   top: 0;
@@ -28,14 +29,14 @@ body {
 }
 footer {
   grid-area: footer;
-  padding: 50px 0 230px 0;
+  padding: 50px 0 210px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: #4f4940;
   background-color: #e6e6e603;
 
-  P {
+  p {
     font-family: "proxima-nova", sans-serif;
     font-size: 13px;
     margin: 0;
@@ -43,7 +44,7 @@ footer {
   svg {
     cursor: pointer;
   }
-  ul {
+  #footer-links {
     padding: 15px 0 15px 0;
     font-family: "proxima-nova", sans-serif;
     margin: 0;
@@ -121,40 +122,49 @@ footer {
   padding-top: 40px;
   padding-left: 0px;
   background-color: black;
+
+  li {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    top: -10px;
+    /* color: #969696; */
+    color: white;
+    transition: color 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  li:hover {
+    color: #ff4500;
+
+    svg {
+      transition: fill 0.3s ease-in-out;
+      fill: #ff4500;
+    }
+  }
+  li::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: -5px;
+    left: 0;
+    background-color: #ff4500;
+    transform-origin: bottom left;
+    transition: transform 0.3s ease;
+  }
+  li:hover::after {
+    transform: scaleX(0.99);
+    transform-origin: bottom left;
+  }
 }
-#nav-list > li {
-  display: inline-block;
-  position: relative;
-  top: -10px;
-  /* color: #969696; */
-  color: white;
-  transition: color 0.3s ease;
-  cursor: pointer;
-}
-#nav-list > li:hover {
-  color: #ff4500;
-}
-#nav-list > li::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 1px;
-  bottom: -5px;
-  left: 0;
-  background-color: #ff4500;
-  transform-origin: bottom left;
-  transition: transform 0.3s ease;
-}
-#nav-list > li:hover::after {
-  transform: scaleX(0.99);
-  transform-origin: bottom left;
-}
+
 header {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 20px 15px 0 15px;
+  padding: 30px 15px 0 15px;
 }
 #logo {
   height: auto;
@@ -165,16 +175,89 @@ header {
 @media (min-width: 1281px) and (max-width: 1600px) {
   #container {
     grid-template-columns: 1fr 10fr;
-    grid-template-rows: 100vh 100vh 50px;
+    grid-template-rows: 100vh 300px 100vh 50px;
     grid-template-areas:
       "nav title"
+      "nav newsletter"
       "nav steaks"
       "footer footer";
   }
+  #newsletter {
+    grid-area: newsletter;
+    background-color: #e6e6e6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      font-family: "proxima-nova", sans-serif;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    p {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: 14px;
+      padding: 0 0 20px 0;
+    }
+    #newsletter-inputs {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+
+      input {
+        padding: 10px 15px;
+        border: 1px solid #cad3db;
+        width: 431px;
+        font-size: 18px;
+        color: #0f121f;
+        font-size: 14px;
+        font-family: "proxima-nova", sans-serif;
+      }
+      button {
+        background-color: white;
+        color: black;
+        border: none;
+        transition: 0.5s ease;
+        border: 3px solid black;
+        font-family: "proxima-nova", sans-serif;
+        width: 100px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+  #nav-list li svg {
+    padding: 0 10px 0 0;
+  }
   header {
-    box-shadow: 0 1.5px 3px 1px rgba(0, 0, 0, 0.218);
+    box-shadow: 3px 0px 3px 1px rgba(0, 0, 0, 0.218);
     /* background-color: #e6e6e603; */
     background-color: black;
+    color: white;
+    font-family: "proxima-nova", sans-serif;
+    align-items: normal;
+
+    #nav-additional-info {
+      padding: 30px 0 0 0;
+
+      h5 {
+        margin: 0;
+        font-size: 14px;
+      }
+      p {
+        margin: 0;
+        font-size: 12px;
+        padding: 0 0 20px 0;
+      }
+      hr {
+        margin: 4px 0 6px 0;
+      }
+    }
   }
   .steaks {
     display: flex;
@@ -199,9 +282,10 @@ header {
     width: 50%;
     height: 100%;
     justify-content: center;
+    /* overflow: hidden; */
   }
   .steaks-gallery > li {
-    flex: 0 0 18%;
+    flex: 0 2 18%;
   }
   .steaks-gallery > li:hover {
     flex: 0 0 min(500px, 60%);
@@ -214,11 +298,39 @@ header {
       font-size: 15px;
     }
   }
+  footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+
+    #footer-links {
+      grid-area: 2 / 3 / 2 / 3;
+      flex-direction: row;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+      /* padding: 200px 150px 0 0; */
+    }
+    /* grid-row-start / grid-column-start / grid-row-end / grid-column-end.
+ */
+    #footer-icons {
+      grid-area: 1 / 2 / 1 / 2;
+      padding: 0;
+      margin: 0;
+    }
+    p {
+      /* padding: 200px 0 0 150px; */
+      padding: 0;
+      margin: 0;
+      grid-area: 2 / 1 / 2 / 1;
+    }
+  }
 }
 @media (min-width: 701px) and (max-width: 1280px) {
   #container {
     grid-template-columns: 100%;
-    grid-template-rows: 350px 100vh 25vh 100vh 50px;
+    grid-template-rows: 370px 100vh 25vh 100vh 50px;
     grid-template-areas:
       "nav"
       "title"
@@ -232,7 +344,7 @@ header {
     text-align: center;
     align-items: center;
     width: 100%;
-    height: 60px;
+    height: 80px;
     background-color: black;
     box-shadow: 0 1.5px 3px 1px rgba(0, 0, 0, 0.218);
     font-size: 15px;
@@ -243,6 +355,12 @@ header {
     top: 0;
     z-index: 9999;
     /* padding: 20px 50px 0 30px; */
+    li {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
   header {
     padding: 30px 0 0 0;
@@ -303,6 +421,13 @@ header {
     padding: 20px 0 0 0;
     gap: 3%;
     box-shadow: 0 1.5px 3px 1px rgba(0, 0, 0, 0.218);
+
+    li {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
   header {
     padding: 0;
@@ -328,10 +453,11 @@ header {
 }
 @media (max-width: 250px) {
   #container {
+    display: hidden;
     visibility: hidden;
     overflow: hidden;
   }
   #unsupported-screen-size {
-    visibility: visible;
+    display: unset;
   }
 }

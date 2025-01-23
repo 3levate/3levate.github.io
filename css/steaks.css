@@ -85,7 +85,10 @@
       display: block;
       font-size: 14px;
       font-family: "proxima-nova", sans-serif;
-      padding-top: 10px;
+      padding: 10px 0 25px 0;
+    }
+    small {
+      font-family: "Playfair Display", serif;
     }
   }
 }

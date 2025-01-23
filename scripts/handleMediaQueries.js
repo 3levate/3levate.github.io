@@ -44,23 +44,8 @@ function checkForSmallerMedia(smallerMediaQuery) {
   }
 }
 
-function checkForSmallerMedia_newsLetter(smallerMediaQuery) {
-  const container = document.querySelector("#container");
-  let newsletter = document.getElementById("newsletter");
-
-  if (smallerMediaQuery.matches && newsletter) {
-    newsletter.remove();
-    console.log("removed newsletter");
-  } else if (!newsletter) {
-    container.appendChild(newsletterClone);
-    console.log("added newsletter");
-  }
-}
-
 maxWidthQuery.addListener(checkForMaxWidthMedia);
 smallerWidthsQuery.addListener(checkForSmallerMedia);
-smallerWidthsQuery.addListener(checkForSmallerMedia_newsLetter);
 
 checkForMaxWidthMedia(maxWidthQuery);
 checkForSmallerMedia(smallerWidthsQuery);
-checkForSmallerMedia_newsLetter(smallerWidthsQuery);

@@ -29,49 +29,58 @@ body {
 }
 footer {
   grid-area: footer;
-  padding: 50px 0 210px 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
   color: #4f4940;
   background-color: #e6e6e603;
+  justify-content: center;
 
-  p {
-    font-family: "proxima-nova", sans-serif;
-    font-size: 13px;
-    margin: 0;
-  }
-  svg {
-    cursor: pointer;
-  }
-  #footer-links {
-    padding: 15px 0 15px 0;
-    font-family: "proxima-nova", sans-serif;
-    margin: 0;
-    list-style-type: none;
-    font-size: 14px;
+  .footer-row.top {
     display: flex;
-    gap: 3px;
-    flex-direction: column;
     justify-content: center;
-    text-align: center;
+    width: 100%;
 
-    li {
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-    li:hover {
-      color: white;
+    #footer-icons {
+      list-style-type: none;
+      display: flex;
+      gap: 15px;
+      padding: 0;
+      margin: 0;
+
+      svg {
+        cursor: pointer;
+      }
     }
   }
-}
-#footer-icons {
-  list-style-type: none;
-  display: flex;
-  gap: 15px;
-  flex-direction: row;
-  padding: 0;
-  margin: 0;
+  .footer-row.bottom {
+    display: flex;
+    width: 100%;
+
+    #footer-links {
+      font-family: "proxima-nova", sans-serif;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      font-size: 13px;
+      display: flex;
+      font-weight: 600;
+
+      li {
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+      li:hover {
+        color: white;
+      }
+    }
+    p {
+      font-family: "proxima-nova", sans-serif;
+      font-size: 13px;
+      margin: 0;
+      padding: 0;
+      font-weight: 100;
+    }
+  }
 }
 
 #container {
@@ -171,65 +180,66 @@ header {
   width: auto;
   max-width: 150px;
 }
+#newsletter {
+  grid-area: newsletter;
+  background-color: #e6e6e6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    font-family: "proxima-nova", sans-serif;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    font-size: 14px;
+    padding: 5px 30px 20px 30px;
+    text-align: center;
+  }
+  #newsletter-inputs {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    input {
+      padding: 10px 15px;
+      border: 1px solid #cad3db;
+      width: 50vw;
+      font-size: 18px;
+      color: #0f121f;
+      font-size: 14px;
+      font-family: "proxima-nova", sans-serif;
+    }
+    button {
+      background-color: white;
+      color: black;
+      border: none;
+      transition: 0.5s ease;
+      border: 3px solid black;
+      font-family: "proxima-nova", sans-serif;
+      width: 100px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+}
 
 @media (min-width: 1281px) and (max-width: 1600px) {
   #container {
     grid-template-columns: 1fr 10fr;
-    grid-template-rows: 100vh 300px 100vh 50px;
+    grid-template-rows: 100vh 300px 100vh 300px;
     grid-template-areas:
       "nav title"
       "nav newsletter"
       "nav steaks"
       "footer footer";
-  }
-  #newsletter {
-    grid-area: newsletter;
-    background-color: #e6e6e6;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    h2 {
-      font-family: "proxima-nova", sans-serif;
-      text-transform: uppercase;
-      margin: 0;
-    }
-    p {
-      margin: 0;
-      font-family: "Playfair Display", serif;
-      font-size: 14px;
-      padding: 0 0 20px 0;
-    }
-    #newsletter-inputs {
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-
-      input {
-        padding: 10px 15px;
-        border: 1px solid #cad3db;
-        width: 431px;
-        font-size: 18px;
-        color: #0f121f;
-        font-size: 14px;
-        font-family: "proxima-nova", sans-serif;
-      }
-      button {
-        background-color: white;
-        color: black;
-        border: none;
-        transition: 0.5s ease;
-        border: 3px solid black;
-        font-family: "proxima-nova", sans-serif;
-        width: 100px;
-        cursor: pointer;
-      }
-      button:hover {
-        background-color: black;
-        color: white;
-      }
-    }
   }
   #nav-list li svg {
     padding: 0 10px 0 0;
@@ -283,12 +293,13 @@ header {
     height: 100%;
     justify-content: center;
     /* overflow: hidden; */
-  }
-  .steaks-gallery > li {
-    flex: 0 2 18%;
-  }
-  .steaks-gallery > li:hover {
-    flex: 0 0 min(500px, 60%);
+
+    li {
+      flex: 0 2 18%;
+    }
+    li:hover {
+      flex: 0 0 min(500px, 60%);
+    }
   }
   #title {
     height: 100%;
@@ -299,41 +310,28 @@ header {
     }
   }
   footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 10px;
+    padding: 0 150px 0 150px;
+    gap: 50px;
 
-    #footer-links {
-      grid-area: 2 / 3 / 2 / 3;
-      flex-direction: row;
-      gap: 20px;
-      padding: 0;
-      margin: 0;
-      /* padding: 200px 150px 0 0; */
-    }
-    /* grid-row-start / grid-column-start / grid-row-end / grid-column-end.
- */
-    #footer-icons {
-      grid-area: 1 / 2 / 1 / 2;
-      padding: 0;
-      margin: 0;
-    }
-    p {
-      /* padding: 200px 0 0 150px; */
-      padding: 0;
-      margin: 0;
-      grid-area: 2 / 1 / 2 / 1;
+    .footer-row.bottom {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+
+      #footer-links {
+        flex-direction: row;
+        gap: 25px;
+      }
     }
   }
 }
 @media (min-width: 701px) and (max-width: 1280px) {
   #container {
     grid-template-columns: 100%;
-    grid-template-rows: 370px 100vh 25vh 100vh 50px;
+    grid-template-rows: 370px 100vh 25vh 25vh 100vh 300px;
     grid-template-areas:
       "nav"
       "title"
+      "newsletter"
       "steaks-banner"
       "steaks-gallery"
       "footer";
@@ -388,60 +386,72 @@ header {
     }
   }
   footer {
-    padding: 60px 0 150px 0;
-    flex-direction: column;
+    gap: 25px;
 
-    ul {
+    .footer-row.bottom {
       gap: 25px;
-      flex-direction: row;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+
+      #footer-links {
+        gap: 5px;
+        flex-direction: column;
+        justify-content: center;
+      }
     }
   }
 }
 @media (min-width: 251px) and (max-width: 700px) {
   #container {
     grid-template-columns: 100%;
-    grid-template-rows: 290px 100vh 25vh 100vh 50px;
+    grid-template-rows: min(330px, max(70vw, 300px)) 100vh 25vh 25vh 100vh 300px;
     grid-template-areas:
       "nav"
       "title"
+      "newsletter"
       "steaks-banner"
       "steaks-gallery"
       "footer";
     gap: 0px;
   }
-  #nav-list {
-    flex-direction: row;
-    text-align: center;
-    align-items: center;
-    white-space: nowrap;
-    width: 100%;
-    height: 100%;
-    /* background-color: #e6e6e603; */
-    font-size: 14px;
-    padding: 20px 0 0 0;
-    gap: 3%;
-    box-shadow: 0 1.5px 3px 1px rgba(0, 0, 0, 0.218);
-
-    li {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-  }
   header {
     padding: 0;
     justify-content: center;
+
+    #logo {
+      padding: 20px 0 20px 0;
+      max-width: 180px;
+    }
+    #nav-list {
+      flex-direction: row;
+      text-align: center;
+      align-items: center;
+      white-space: nowrap;
+      width: 100%;
+      height: 100%;
+      /* background-color: #e6e6e603; */
+      font-size: 3vw;
+      padding: 20px 0 0 0;
+      gap: 3%;
+      box-shadow: 0 1.5px 3px 1px rgba(0, 0, 0, 0.218);
+
+      li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
-  #logo {
-    padding: 20px 0 20px 0;
-    max-width: 180px;
+  #title p {
+    font-size: max(3vw, 12px);
   }
   .steaks-gallery {
     height: 100%;
 
     li {
-      flex: 0 0 15%;
+      flex: 0 2 15%;
     }
     li:hover {
       flex: 0 0 250px;
@@ -449,6 +459,22 @@ header {
   }
   #steaks-banner {
     height: 100%;
+  }
+  footer {
+    gap: 25px;
+
+    .footer-row.bottom {
+      gap: 25px;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+
+      #footer-links {
+        gap: 5px;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
   }
 }
 @media (max-width: 250px) {

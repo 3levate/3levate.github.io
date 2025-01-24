@@ -10,7 +10,6 @@
   padding: 50px;
 }
 #borders {
-  /* visibility: hidden; */
   position: absolute;
   right: 0;
   top: 0;
@@ -115,7 +114,12 @@ footer {
     margin: 0;
   }
 }
-
+header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 15px 0 15px;
+}
 #nav-list {
   font-family: "proxima-nova", sans-serif;
   margin: 0;
@@ -169,12 +173,6 @@ footer {
   }
 }
 
-header {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 30px 15px 0 15px;
-}
 #logo {
   height: auto;
   width: auto;
@@ -251,6 +249,7 @@ header {
     color: white;
     font-family: "proxima-nova", sans-serif;
     align-items: normal;
+    padding-top: 0;
 
     #nav-additional-info {
       padding: 30px 0 0 0;
@@ -327,7 +326,7 @@ header {
 @media (min-width: 701px) and (max-width: 1280px) {
   #container {
     grid-template-columns: 100%;
-    grid-template-rows: 370px 100vh 25vh 25vh 100vh 300px;
+    grid-template-rows: auto 100vh 25vh 25vh 100vh 300px;
     grid-template-areas:
       "nav"
       "title"
@@ -348,11 +347,13 @@ header {
     font-size: 15px;
     padding-top: 20px;
     gap: 20px;
+    /* padding: 20px 50px 0 30px; */
+
     position: sticky;
     position: -webkit-sticky;
     top: 0;
     z-index: 9999;
-    /* padding: 20px 50px 0 30px; */
+
     li {
       display: flex;
       flex-direction: column;

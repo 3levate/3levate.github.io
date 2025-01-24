@@ -8,6 +8,9 @@ function checkForMaxWidthMedia(mediaQuery) {
   const steaksGallery = document.querySelector(".steaks-gallery");
   const steaksBanner = document.querySelector("#steaks-banner");
   let steaks = document.querySelector(".steaks");
+  let headerWrapper = document.getElementById("header-wrapper");
+  const header = document.querySelector("header");
+  console.log("header children", header.children);
 
   //if it is max width screen size then ensure steaks for flexbox with gallery and banner
   if (mediaQuery.matches) {
@@ -17,11 +20,24 @@ function checkForMaxWidthMedia(mediaQuery) {
       container.appendChild(steaks);
       console.log("created steaks");
     }
-
     if (!steaks.contains(steaksGallery) && !steaks.contains(steaksBanner)) {
       steaks.appendChild(steaksGallery);
       steaks.appendChild(steaksBanner);
       console.log("added steaks gallery and steaks-banner to steaks");
+    }
+
+    if (!headerWrapper) {
+      headerWrapper = document.createElement("div");
+      headerWrapper.setAttribute("id", "header-wrapper");
+      headerWrapper.style.position = "sticky";
+      headerWrapper.style.top = "0";
+      headerWrapper.style.paddingTop = "20px";
+
+      headerWrapper.appendChild(document.querySelector("#nav > a"));
+      headerWrapper.appendChild(document.getElementById("nav-list"));
+      headerWrapper.appendChild(document.getElementById("nav-additional-info"));
+
+      header.insertBefore(headerWrapper, null);
     }
   } else if (steaks) {
     container.insertBefore(steaksGallery, steaks);

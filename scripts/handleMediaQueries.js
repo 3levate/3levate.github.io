@@ -1,4 +1,4 @@
-const maxWidthQuery = window.matchMedia("(min-width: 1281px) and (max-width: 1600px)");
+const maxWidthQuery = window.matchMedia("(min-width: 1281px) and (max-width: 2400px)");
 const smallerWidthsQuery = window.matchMedia("(max-width: 1280px)");
 const navContactClone = document.getElementById("nav-additional-info");
 const newsletterClone = document.getElementById("newsletter");

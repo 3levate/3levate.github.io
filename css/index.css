@@ -229,7 +229,7 @@ header {
   }
 }
 
-@media (min-width: 1281px) and (max-width: 1600px) {
+@media (min-width: 1281px) and (max-width: 2400px) {
   #container {
     grid-template-columns: 1fr 10fr;
     grid-template-rows: 100vh 300px 100vh 300px;

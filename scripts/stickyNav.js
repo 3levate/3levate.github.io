@@ -1,3 +1,6 @@
+//TODO get nav list height each call
+//TODO why is nav list height getting changed
+
 const navListNormalDistanceToTopOfViewport =
   document.getElementById("nav-list").getBoundingClientRect().top + window.scrollY;
 const navlistOffsetHeight_Static = document

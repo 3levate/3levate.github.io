@@ -14,6 +14,9 @@ function checkForMaxWidthMedia(mediaQuery) {
 
   //if it is max width screen size then ensure steaks for flexbox with gallery and banner
   if (mediaQuery.matches) {
+    const navList = document.getElementById("nav-list");
+    navList.style.height = "auto";
+
     if (!steaks) {
       steaks = document.createElement("div");
       steaks.classList.add("steaks");
@@ -24,6 +27,10 @@ function checkForMaxWidthMedia(mediaQuery) {
       steaks.appendChild(steaksGallery);
       steaks.appendChild(steaksBanner);
       console.log("added steaks gallery and steaks-banner to steaks");
+    }
+
+    if (!document.getElementById("nav-additional-info")) {
+      header.appendChild(navContactClone);
     }
 
     if (!headerWrapper) {
@@ -48,20 +55,28 @@ function checkForMaxWidthMedia(mediaQuery) {
 }
 
 function checkForSmallerMedia(smallerMediaQuery) {
-  const header = document.querySelector("header");
-  let navContact = document.getElementById("nav-additional-info");
+  console.log("checkForSmallerMedia called");
+  if (smallerMediaQuery.matches) {
+    console.log("smallerMediaQuery matches");
+    const header = document.querySelector("header");
+    const navContact = document.getElementById("nav-additional-info");
+    const headerWrapper = document.getElementById("header-wrapper");
 
-  if (smallerMediaQuery.matches && navContact) {
-    navContact.remove();
-    console.log("removed nav-additional-info");
-  } else if (!navContact) {
-    header.appendChild(navContactClone);
-    console.log("added nav-additional-info");
+    if (navContact) {
+      navContact.remove();
+      console.log("removed nav-additional-info");
+    }
+
+    if (headerWrapper) {
+      header.appendChild(document.querySelector("#header-wrapper > a"));
+      header.appendChild(document.getElementById("nav-list"));
+      headerWrapper.remove();
+      console.log("removed header-wrapper");
+    }
   }
 }
 
-maxWidthQuery.addListener(checkForMaxWidthMedia);
-smallerWidthsQuery.addListener(checkForSmallerMedia);
-
 checkForMaxWidthMedia(maxWidthQuery);
 checkForSmallerMedia(smallerWidthsQuery);
+maxWidthQuery.addListener(checkForMaxWidthMedia);
+smallerWidthsQuery.addListener(checkForSmallerMedia);

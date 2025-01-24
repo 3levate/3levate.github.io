@@ -349,11 +349,6 @@ header {
     gap: 20px;
     /* padding: 20px 50px 0 30px; */
 
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
-    z-index: 9999;
-
     li {
       display: flex;
       flex-direction: column;
@@ -406,7 +401,7 @@ header {
 @media (min-width: 251px) and (max-width: 700px) {
   #container {
     grid-template-columns: 100%;
-    grid-template-rows: min(330px, max(70vw, 300px)) 100vh 25vh 25vh 100vh 300px;
+    grid-template-rows: min(320px, max(70vw, 300px)) 100vh 25vh 25vh 100vh 300px;
     grid-template-areas:
       "nav"
       "title"
